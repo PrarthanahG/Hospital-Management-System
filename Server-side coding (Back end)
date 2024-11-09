@@ -1,0 +1,127 @@
+/*
+SQLyog Community v12.02 (32 bit)
+MySQL - 5.5.29 : Database - blockhealthcare
+*********************************************************************
+*/
+/*!40101 SET NAMES utf8 */;
+/*!40101 SET SQL_MODE=''*/;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`blockhealthcare` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `blockhealthcare`;
+/*Table structure for table `blockchain` */
+DROP TABLE IF EXISTS `blockchain`;
+CREATE TABLE `blockchain` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `digsignature` varchar(300) DEFAULT NULL,
+  PRIMARY KEY (`id`) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=latin1;
+/*Data for the table `blockchain` */
+insert into `blockchain`(`id`,`digsignature`) values 
+/*Table structure for table `dreg` */
+DROP TABLE IF EXISTS `dreg`;
+CREATE TABLE `dreg` (
+  `id` int(200) NOT NULL AUTO_INCREMENT,
+  `dname` varchar(200) DEFAULT NULL,
+  `pass` varchar(200) DEFAULT NULL,
+  `hname` varchar(200) DEFAULT NULL,
+  `des` varchar(200) DEFAULT NULL,
+  `spec` varchar(200) DEFAULT NULL,
+  `dob` varchar(200) DEFAULT NULL,
+  `email` varchar(200) DEFAULT NULL,
+  `contact` varchar(200) DEFAULT NULL,
+  `location` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT 'Waiting',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+/*Data for the table `dreg` */
+insert  into `dreg`(`id`,`dname`,`pass`,`hname`,`des`,`spec`,`dob`,`email`,`contact`,`location`,`status`) values
+ (16,'Lakshmi','lakshmi','Apollo','Doctor','Cardiologists','1998-06-05','lakshmi@gmail.com','898879898','Chennai','Activated'),
+(17,'Camy','camy','Apollo','Doctor','Gynecologists','2023-03-16','camy@gmail.com','8739579345','Chennai','Activated'),
+(18,'Jhansi','jhansi','Apollo','Doctor','General','2023-03-09','jhansi@gmail.com','8797878798','Chennai','Waiting'),
+(19,'Vel','vel','Vijaya','Doctor','Cardiologists','3332-03-31','vel@gmail.com','8737846778','Chennai','Activated'),
+(20,'Ram','ram','SMK','Doctor','General','1985-05-14','ram@gmail.com','7895642565','Chennai','Activated');
+/*Table structure for table `preg` */
+DROP TABLE IF EXISTS `preg`;
+CREATE TABLE `preg` (
+  `id` int(22) NOT NULL AUTO_INCREMENT,
+  `pname` varchar(222) DEFAULT NULL,
+  `pass` varchar(222) DEFAULT NULL,
+  `dob` varchar(222) DEFAULT NULL,
+  `email` varchar(222) DEFAULT NULL,
+  `contact` varchar(222) DEFAULT NULL,
+  `location` varchar(222) DEFAULT NULL,
+  `status` varchar(222) DEFAULT 'Waiting',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*Data for the table `preg` */
+insert  into `preg`(`id`,`pname`,`pass`,`dob`,`email`,`contact`,`location`,`status`) values (3,'Deepa','deepa','4344-0606','deepa@gmail.com','8355454588','Chennai','Activated'),
+(4,'Arun','arun','2000-11-12','arun@gmail.com','9875486521','chennai','Activated');
+/*Table structure for table `request` */
+DROP TABLE IF EXISTS `request`;
+CREATE TABLE `request` (
+  `sno` int(22) NOT NULL AUTO_INCREMENT,
+  `pname` varchar(222) DEFAULT NULL,
+  `keyy` varchar(222) DEFAULT 'Generate Symetric Key',
+  `status` varchar(222) DEFAULT 'Waiting',
+  PRIMARY KEY (`sno`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+/*Data for the table `request` */
+insert  into `request`(`sno`,`pname`,`keyy`,`status`) values (1,'Deepa','512509629D305FF9','Permitted'),
+(5,'Deepa','Generate Symetric Key','Waiting'),
+(6,'Deepa','Generate Symetric Key','Waiting'),
+(7,'Deepa','Generate Symetric Key','Waiting'),
+(8,'Arun','Generate Symetric Key','Waiting'),
+(9,'Arun','Generate Symetric Key','Waiting'),
+(10,'Arun','5CB1B2F3446BA207','Permitted'),
+(11,'arun','F0FA7CD84167C829','Permitted');
+/*Table structure for table `request1` */
+DROP TABLE IF EXISTS `request1`;
+CREATE TABLE `request1` (
+  `sno` int(22) NOT NULL AUTO_INCREMENT,
+  `pname` varchar(222) DEFAULT NULL,
+  `patient` varchar(222) DEFAULT NULL,
+  `dname` varchar(222) DEFAULT NULL,
+  `status` varchar(222) DEFAULT 'Waiting',
+  `pstatus` varchar(222) DEFAULT 'Waiting',
+  `file` varchar(222) DEFAULT NULL,
+  `keyy` varchar(222) DEFAULT 'Waiting',
+  `estatus` varchar(222) DEFAULT 'Waiting',
+  `sol` varchar(222) DEFAULT NULL,
+  PRIMARY KEY (`sno`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+/*Data for the table `request1` */
+insert into `request1`(`sno`,`pname`,`patient`,`dname`,`status`,`pstatus`,`file`,`keyy`,`estatus`,`sol`) values 
+(5,'Deepa','Rani','Camy','Permitted','Accepted','Resource Allocation.txt','512509629D305FF9','Key Sent','Do yoga Daily. No need any operation. Take proper food'),
+(6,'Deepa','Rani','Camy','Waiting','Waiting','Resource Allocation.txt','512509629D305FF9','Waiting',NULL),
+(7,'Arun','Arun','Camy','Permitted','Accepted','Blockhealthcare.sql','5CB1B2F3446BA207','Key Sent','ghhg'),
+(12,'Arun','Arun','Camy','Permitted','Waiting','Blockhealthcare.sql','5CB1B2F3446BA207','Waiting','ghhg');
+/*Table structure for table `upload` */
+DROP TABLE IF EXISTS `upload`;
+CREATE TABLE `upload` (
+  `sno` int(22) NOT NULL AUTO_INCREMENT,
+  `keyy` varchar(222) DEFAULT NULL,
+  `pname` varchar(222) DEFAULT NULL,
+  `patient` varchar(222) DEFAULT NULL,
+  `dob` varchar(222) DEFAULT NULL,
+  `gen` varchar(222) DEFAULT NULL,
+  `diseas` varchar(222) DEFAULT NULL,
+  `age` varchar(222) DEFAULT NULL,
+  `blood` varchar(222) DEFAULT NULL,
+  `email` varchar(222) DEFAULT NULL,
+  `addr` varchar(222) DEFAULT NULL,
+  `con` varchar(222) DEFAULT NULL,
+  `dname` varchar(222) DEFAULT NULL,
+  `file` varchar(222) DEFAULT NULL,
+  PRIMARY KEY (`sno`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*Data for the table `upload` */
+insert  into `upload`(`sno`,`keyy`,`pname`,`patient`,`dob`,`gen`,`diseas`,`age`,`blood`,`email`,`addr`,`con`,`dname`,`file`) values (4,'512509629D305FF9','Deepa','Rani','14/09/1996','Female','Fever','30','o+ve','rani@gmail.com','Chennai','9879789676','Camy','Resource Allocation.txt'),
+(5,'5CB1B2F3446BA207','Arun','Arun','12/09/1999','Male','Cancer','24','B+','arun12@gmail.com','Chennai','87665756454','','Blockhealthcare.sql'),
+(6,'5CB1B2F3446BA207','Arun','Arun','12/09/1999','Male','Cancer','30','O+','arun12@gmail.com','Chennai','78967867546','Camy','Blockhealthcare.sql'),
+(7,'5CB1B2F3446BA207','Arun','Arun','12/09/1999','Male','Cancer','30','O+','arun12@gmail.com','Chennai','78967867546','Camy','Blockhealthcare.sql');
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
